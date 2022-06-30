@@ -11,6 +11,9 @@ import Folder from '../assets/Folder.png';
 import Setting from '../assets/Setting.png';
 import { FaMoon } from "react-icons/fa";
 import { FaSun } from "react-icons/fa";
+import { Footer } from './Footer';
+import { Header } from './Header';
+
 
 
 
@@ -19,6 +22,8 @@ export function SideBar() {
   const [style, setStyle] = useState('offDark');
   const [moon, setMoon] = useState('visible');
   const [sun, setSun] = useState('hidden');
+
+
 
   const Menus = [
     { title: "Dashboard", src: Chart_fill },
@@ -40,7 +45,7 @@ export function SideBar() {
     setStyle('dark');
     setMoon('hidden')
     setSun('visible')
-    
+
   }
 
   function LightMode() {
@@ -52,8 +57,9 @@ export function SideBar() {
 
   return (
     <div className={style}>
+      <Header />
       <div className="flex ">
-        <div className={`Menu-Side ${open ? "w-72" : "w-20"} duration-300 h-screen p-5 pt-8 bg-dark-purple dark:bg-black relative`}>
+        <div className={`${open ? "w-72" : "w-20"} duration-300 h-screen p-5 pt-8 bg-dark-purple border-r border-black dark:bg-black dark:border-r dark:border-white relative lg:hidden xl:hidden 2xl:hidden`}>
           <img src={botaoMenu} className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 border-dark-purple dark:border-white ${!open && "rotate-180"}`} alt="teste" onClick={CloseMenu} />
           <div className="flex gap-x-4 items-center">
             <img src={Logo} className={`cursos-pointer duration-500`} />
@@ -67,19 +73,20 @@ export function SideBar() {
               </li>
             ))}
           </ul>
-          <div className='flex flex-row'>
-            <div className={`flex items-center  cursor-pointer pt-4 pl-2 text-yellow-300 hover:text-white`}>
+        </div>
+        <div className="p-7 text-2xl font-semibold flex-1 h-screen dark:text-white dark:bg-slate-900 duration-300">
+          <div className='flex flex-row justify-end items-end'>
+            <div className={`flex items-center  cursor-pointer pt-4 pl-2 text-yellow-300 `}>
               <FaMoon className={moon} onClick={DarkMode} />
             </div>
-            <div className={`flex items-center  cursor-pointer pt-4 pl-2 text-yellow-300 hover:text-white`}>
+            <div className={`flex items-center  cursor-pointer pt-4 pl-2 text-yellow-300`}>
               <FaSun className={sun} onClick={LightMode} />
             </div>
           </div>
-        </div>
-        <div className="p-7 text-2xl font-semibold flex-1 h-screen dark:text-white dark:bg-slate-900">
           <h1 >Home Page</h1>
         </div>
       </div>
+      <Footer />
     </div>
 
   )
